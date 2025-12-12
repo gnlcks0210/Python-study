@@ -82,3 +82,76 @@ str_one = "1" #문자
 int_one = 1 # 숫자
 
 print("str_one == int_one : ",str_one == int_one)
+
+#논리 연산자
+# - 논리적인 연산을 수행하여 참(True)인지 거짓(False)인지 판단하는 연산자
+# - 종류 and, or, not
+
+is_snowing = True
+is_cold = True
+
+# and : 양쪽의 값이 모두 True일 때 True 반환
+#       하나라도 False이면 False 반환
+# is_snowing과 is_cold가 둘 다 True라면 최종적으로 True 반환
+is_winter = is_snowing and is_cold
+print("is_snowing : ",is_snowing)
+
+age = 15
+height = 162
+# 놀이공원의 입장 조건이 나이 13세 이상, 키 150 이상
+is_join = age >= 13 and height >= 150
+
+# 1. True and height >= 150
+# 2. True and True
+# 3. and 연산 후 최종적으로 True 반환
+print("is_join : ",is_join)
+
+#-------------------------
+is_snowing = True
+is_cold = False
+
+# or 연산자 : 둘 중 하나라도 True가 있으면 최종적으로 True 반환
+is_winter = is_snowing or is_cold
+print("is_snowing : ",is_snowing)
+
+price = 60000 #구매 금액
+is_member = False # 비회원
+
+#구매 금액이 50,000원 이상 이거나 회원이라면 True
+result = price >= 50000 or is_member
+print("result : ",result)
+
+#not 연산자 : True면 False로 반환, False면 True로 반환
+is_ture = True
+is_not_ture = not is_ture
+
+print("is_not_ture : ",is_not_ture)
+
+# 조건 연산자
+# - 조건에 따라서 결과를 선택할 수 있음
+num_1 = 25
+num_2 = 23
+
+#더 큰 값을 변수에 할당
+max = num_1 if num_1 > num_2 else num_2
+print("max : ",max)
+
+
+# 비트 연산자
+# - 숫자를 2진수로 변환하여 비트 단위 연산을 수행
+
+#컴퓨터는 0과 1만 알고 있음
+# - 이 숫자(0 or 1) 하나를 비트(bit)라고 부름
+
+#비트가 8개 있으면(8bit) 1바이트(1byte)라고 부름
+
+#시프트 연산자(<<, >>)
+# - 비트를 왼쪽 또는 오른쪽으로 밀어줌
+x = 5 #2진수로 바꾸면 0101
+print(x << 1)   # 1 0 1 0
+print(x << 2)   # 1 0 1 0 0
+
+# 2진수 : 0   1   1   0   1   0   1   0
+#       128  64  32  16  8   4   2   1
+#       ------------------------------
+# 10진수 :                          106
