@@ -30,6 +30,7 @@ else:
 month = int(input("월(month)를 입력해주세요 : "))
 
 #범위로 풀기
+
 if month >=3 and month <= 5:
     print("봄")
 elif month >=6 and month <= 8:
