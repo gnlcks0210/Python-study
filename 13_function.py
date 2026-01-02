@@ -156,3 +156,65 @@ while True:
         break
     else:
         pass
+
+
+
+
+#-------------------------------
+# 스코프(Scope)
+# - 변수가 유효한 범위
+
+#LEGB
+# - Local : 함수 내부에서 정의된 변수 (지역 변수)
+# - Enclosing : 중첩 함수에서 바깥쪽 함수의 변수
+# - Global : 파일 전체에서 접근 가능한 변수 (함수 밖에서 선언됨, 전역 변수)
+# - Built-in : 파이썬에서 제공하는 내장 함수를 위한 공간(len, print, range 등)
+
+#함수 스코프의 동작 순서
+# - Local -> Enclosing -> Global -> Built-in 순서
+
+# Global scope
+# -전역 변수
+# - 함수 바깥에서 선언된 변수
+# - 모든 위치(함수 포함)에서 사용이 가능한 변수
+y = 10 #  Global Scope 전역 변수
+
+# Local Scope
+# -지역 변수
+# - 함수 내부에서 선언된 변수
+# - 함수 내부에서만 사용이 가능한 변수
+def get_x():
+    x = 30 # local Scope 지역 변수
+    print(x)
+
+get_x()
+
+# 전역 함수
+# - 프로그램 전체에서 사용 가능한 함수 (어디서든 호출이 가능)
+# - 여태 수업중에 작성한 함수들이 모두 전역 함수
+
+# 지역 함수
+# - 특정 함수 내부에서 정의된 함수
+# - 특정 함수 내부에서만 호출 가능
+
+x = 10 # Global (전역 변수)
+def outer(): #Global (전역 함수)
+    print("지역 함수 호출 전")
+
+    y = 20 # Enclosing
+    def inner(): # Local (지역 함수)
+        z = 30 #Local (지역 변수)
+        print("지역 함수 inner()가 호출되었습니다.")
+    inner()
+    print("지역 함수 호출 완료")
+
+outer()
+
+count  = 10
+
+def add_test():
+    global count #이 변수는 전역 변수다
+    # 함수 내부에서는 대입 연산(=)을 사용하게 되면 지역 변수로 인식
+    count = count + 10
+
+    print(count)
