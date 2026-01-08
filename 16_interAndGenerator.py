@@ -52,3 +52,64 @@ print(next(result)) # 13. next()가 호출되면서 함수 호출(실행 상태�
 print("네번째 next실행")# 17. 출력
 print(next(result))#18. next()가 호출되면서 함수 호출(실행 상태로 돌입)
 # 20. 더이상 꺼낼 yield 키워드가 없기 때문에 StopIteration 발생
+
+def squares(num):
+    i = 0 # 3. i = 0 , num = 3
+    while i < num: # 4. 0 < 4 True while 실행 #9 14
+        yield i*i # 5. 0 * 0 = 0 / 숫자 0 을 반환 #10 15
+        i += 1 # 8 13
+
+result = squares(3)# 1. 메모리에 함수 올리기
+print(next(result)) # 2. next()가 호출되면서 함수 실행 #6
+
+print(next(result))# 7 # 11
+print(next(result)) #12 16
+#print(next(result)) #yield 키워드를 만나지 못했기 때9문에 StopInteration 발생
+
+# 1. 1부터 N가지 출력하는제너레이터:
+def gen_numbers(n):
+    for i in range(1,n+1):
+        yield i
+
+input = int(input("숫자 입력 : "))
+
+# 1. for문이 내부적으로 gen_numbers(3) 을 제너레이터 객체로 반환
+# 2. 내부적으로 next()를 호출해서 반환된 값을 number 변수에 할당
+for number in gen_numbers(input):
+    print(number)
+
+# 1. [1, 2, 3] 리스트를 이터레이터 객체로 변환
+#    result = iter([1, 2, 3])
+# 2. next(result) 호출
+# 3. i = 1
+#    i = next(result)
+# 4. print(i)니까 1 출력
+# 5. next(result) 호출
+# 6. i = 2
+# 7. print(i) 니까 2 출력
+# 8. next(result) 호출
+# 9. i = 3
+# 10. print(i)니까 3 출력
+# 11. next(result) 호출 -> StopIteration 발생 -> for문 종료
+for i in [1,2,3]:
+    print(i)
+
+def for_def(n):
+    iter_obj = iter(n) # 이터레이터 변환
+
+    while True:
+        i = next(iter_obj) # next() 계속 호출
+        print(i)
+
+# 2. 제너레이터로 range() 구현 해보기
+def range_def(start, end):
+    while start < end:
+        yield start
+        start += 1
+
+#list
+# result = []
+# while True:
+# result.append(next(range_def))
+
+print(list(range_def(1,6))) # list(range(1,6))
